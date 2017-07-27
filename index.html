@@ -4,46 +4,37 @@
     </head>
     <body>
         <script>
-// Logical Operators
-
-// AND operator: && -- works with booleans
-// true && true === true
-// true && false === false --if either of the booleans is false, then the whole thing evaluates to false.
-// false && false === false
-
-// OR operator: || -- also works with booleans
-// true || true == true
-// true || false == true --if either of the booleans is true, then the whole thing evaluates to true
-// false || false == false
-
-// Greater Than: >
-// Less Than: <
-// Greater Than or Equal to: >=
-// Less Than or Equal to: <=
-
-// Dance Party
-// Dance party considered successful if # dancers is between 40 and 60
-// Unless it is a weekend--then there is no upper bound for the # of dancers for the success of party.
-
-var numDancers = 61;
-var isWeekend = false;
-var isSuccess = false;
-
-if (numDancers >= 40 && numDancers <= 60) {
-    isSuccess = true; 
-}
-else if (numDancers >= 40 && isWeekend === true) {
-    isSuccess = true;
+// WHILE LOOPS
+var counter = 1;
+while (counter <= 10) {
+    console.log(counter);
+    counter++;
 }
 
-if (isSuccess) {
-    console.log("Excellent Party!")
-}
-else {
-    console.log("Lame dance party.")
+console.log("Out of loop");
+
+counter = 2;
+while (counter <= 10) {
+    console.log(counter);
+    counter += 2;
 }
 
-// console.log("Party is successful? : " + isSuccess)
+// Concatenating Strings
+// var myString = "";
+// myString = myString + "Na";
+// myString = myString + "Na";
+// myString = myString + "Na";
+// console.log(myString);
+
+var myString = "";
+counter = 1;
+
+while (counter <=3) {
+    myString += "Na";
+    counter++;
+}
+console.log(myString);
+
         </script>
     </body>
 </html>
