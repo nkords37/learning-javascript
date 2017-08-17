@@ -4,27 +4,52 @@
     </head>
     <body>
         <script>
-            // Create function old35(number).
-            // Return true if the given non-negative number is a multiple of 3 or 5, but not both.
+            // Given two integers, return true if they have the same last digit. Assume non-negative integers.
+            // Otherwise return false.
 
-            function old35 (number) {
+            function lastDigit (a,b) {
+                // if (a % 10 === b % 10) {
+                //     return true;
+                // } else return false;
+                return a % 10 === b % 10;
+            }
+            console.log(lastDigit(23,13));
+            console.log(lastDigit(23,3));
+            console.log(lastDigit(23,19));
 
-                var remainder3 = number % 3;
-                var remainder5 = number % 5;
 
-                if (remainder3 === 0 && remainder5 === 0) {
-                    return false;
-                }
-                else if (remainder3 === 0 || remainder5 === 0) {
+console.log(" ");
+
+// Try it with 3 integers.
+            function lastDigit3 (a,b,c) {
+                if (a % 10 === b % 10 && a % 10 === c % 10 && b % 10 === c % 10) {
                     return true;
-                } 
-                else return false;
+                } else return false;
+            }
+            console.log(lastDigit3(23,13,333));
+            console.log(lastDigit3(23,3,2));
+            console.log(lastDigit3(29,19,49));
+
+
+console.log(" ");
+
+
+// Try it with First Digit----WORK IN PROGRESS: works with 2-digit numbers only.
+            function firstDigit (a,b) {
+                var aLastDigit = a % 10;
+                var bLastDigit = b % 10;
+
+                var aFactorTen = a - aLastDigit;
+                var bFactorTen = b - bLastDigit;
+                
+                if (aFactorTen / 10 === bFactorTen / 10) {
+                    return true;
+                } else return false;
             }
 
-            console.log(old35(3));
-            console.log(old35(10));
-            console.log(old35(-15));
-
+            console.log(firstDigit(23,13,33));
+            console.log(firstDigit(23,21,22));
+            console.log(firstDigit(29,19,49));
         </script>
     </body>
 </html>
