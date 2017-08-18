@@ -4,52 +4,35 @@
     </head>
     <body>
         <script>
-            // Given two integers, return true if they have the same last digit. Assume non-negative integers.
-            // Otherwise return false.
-
-            function lastDigit (a,b) {
-                // if (a % 10 === b % 10) {
-                //     return true;
-                // } else return false;
-                return a % 10 === b % 10;
+            // Create a car object variable:
+            var myOldCar = {
+                make: "Honda",
+                model: "Accord",
+                trim: "EX-V6",
+                color: "Red",
+                year: 2002,
+                numDoors: 4,
+                started: false,
+                start: function() {
+                    this.started = true;
+                },
+                stop: function() {
+                    this.started = false;
+                },
+                drive: function() {
+                    if (this.started == true) {
+                        console.log("Vroom!!!");
+                    } else console.log("You must start the car!");
+                }
             }
-            console.log(lastDigit(23,13));
-            console.log(lastDigit(23,3));
-            console.log(lastDigit(23,19));
-
-
-console.log(" ");
-
-// Try it with 3 integers.
-            function lastDigit3 (a,b,c) {
-                if (a % 10 === b % 10 && a % 10 === c % 10 && b % 10 === c % 10) {
-                    return true;
-                } else return false;
-            }
-            console.log(lastDigit3(23,13,333));
-            console.log(lastDigit3(23,3,2));
-            console.log(lastDigit3(29,19,49));
-
-
-console.log(" ");
-
-
-// Try it with First Digit----WORK IN PROGRESS: works with 2-digit numbers only.
-            function firstDigit (a,b) {
-                var aLastDigit = a % 10;
-                var bLastDigit = b % 10;
-
-                var aFactorTen = a - aLastDigit;
-                var bFactorTen = b - bLastDigit;
-                
-                if (aFactorTen / 10 === bFactorTen / 10) {
-                    return true;
-                } else return false;
-            }
-
-            console.log(firstDigit(23,13,33));
-            console.log(firstDigit(23,21,22));
-            console.log(firstDigit(29,19,49));
+            console.log(myOldCar.year + " " + myOldCar.color + " " + myOldCar.make + " " + myOldCar.model + " " + myOldCar.trim);
+            console.log("Started? " + myOldCar.started);
+            myOldCar.start();
+            console.log("Started? " + myOldCar.started);
+            myOldCar.drive();
+            myOldCar.stop();
+            console.log("Started? " + myOldCar.started);
+            myOldCar.drive();
         </script>
     </body>
 </html>
