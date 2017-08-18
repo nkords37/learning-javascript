@@ -12,27 +12,14 @@
                 color: "Red",
                 year: 2002,
                 numDoors: 4,
-                started: false,
-                start: function() {
-                    this.started = true;
-                },
-                stop: function() {
-                    this.started = false;
-                },
-                drive: function() {
-                    if (this.started == true) {
-                        console.log("Vroom!!!");
-                    } else console.log("You must start the car!");
-                }
             }
-            console.log(myOldCar.year + " " + myOldCar.color + " " + myOldCar.make + " " + myOldCar.model + " " + myOldCar.trim);
-            console.log("Started? " + myOldCar.started);
-            myOldCar.start();
-            console.log("Started? " + myOldCar.started);
-            myOldCar.drive();
-            myOldCar.stop();
-            console.log("Started? " + myOldCar.started);
-            myOldCar.drive();
+
+            function changeColor(car,color) {
+                car.color = color;
+            }
+
+            changeColor(myOldCar,"Blue");
+            console.log(myOldCar.color);
         </script>
     </body>
 </html>
