@@ -1,34 +1,51 @@
 <html>
     <head>
-        <title>Objects Assignment 4</title>
+        <title>Objects Continued</title>
     </head>
     <body>
         <script>
-            
-            // Regular function (non-anonymous) definition
-        //    function sum(a,b) {
-        //         console.log(a + b);
-        //     };
-
-        // Anonymous functions: 
-            var sum = function(a,b) {
-                console.log(a + b);
+            // Defining a "constructor," which is called when we instantiate this function to create a function.
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+                this.children = []; //Array variable;
             };
 
-            var product = function(a,b) {
-                console.log(a*b);
+            // Use the prototype property to add a behavior to all "Persons"
+            Person.prototype.celebrateBirthday = function() {
+                this.age++;
             };
 
-        // Thanks to anonymous functions, we're able to pass functions as arguments into other functions.
-            function doSomething(a,b,myFunc) {
-                myFunc(a,b);
-            };
+            Person.prototype.addChild = function(name,age) {
+                this.children.push(new Person(name,age))
+            }
+
+            var joe = new Person("Joe", 40); //[new Person("Joe Jr.",10), new Person("Sally 1",7)]
+            var bob = new Person("Bob", 50);
+
+            // joe.children = [];
+            // joe.children.push(new Person("Sally 2",5));
+            // joe.children.push(new Person("Timmy",3));
+
+            console.log(joe.name);
+            console.log(bob.name);
+
+            joe.addChild("Joe Jr.", 25);
+            joe.addChild("Sally", 19);
+
+            // Add grandchild:
+            joe.children[0].addChild("Joe III",1);
+
+            console.log(joe.children[0].name)
+            console.log(joe.children[1].name)
+            console.log(joe.children[0].children[0].name)
+
+            console.log(joe.age);
+            joe.celebrateBirthday();
+            console.log(joe.age);
 
 
-            doSomething(2,5,sum);
-            doSomething(2,6,product);
 
-
-        </script>
+         </script>
     </body>
 </html>
