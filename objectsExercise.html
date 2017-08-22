@@ -4,41 +4,30 @@
     </head>
     <body>
         <script>
-            var myPerson = {
-                name: "John",
-                height: 72, //inches
-                occupation: "Accountant",                
-                age: 35,
-                children: [
-                    {name: "James", age: 2, toys: ["bear", "baseball"]},
-                    {name: "Joy", age: 4, toys: ["tiger", "soccer ball"]},
-                    {name: "Kim", age: 6, toys: ["lion", "bike"]}
-                ],
-                friends: {
-                  friend1: {name: "Jim", age: 33},
-                  friend2: {name: "Sally", age: 36}  
-                },
-                celebrateBirthdays: function() {
-                    this.age++;
-                    for (i=0; i<this.children.length; i++) {
-                        this.children[i].age++;
-                    }
-                }
-            }
-
-            for (j=1; j<=10; j++) {
-               myPerson.celebrateBirthdays(); 
-            }
             
+            // Regular function (non-anonymous) definition
+        //    function sum(a,b) {
+        //         console.log(a + b);
+        //     };
 
-            console.log(myPerson.age);
-            for (i=0; i<myPerson.children.length; i++) {
-                        console.log(myPerson.children[i].age);
-            }
+        // Anonymous functions: 
+            var sum = function(a,b) {
+                console.log(a + b);
+            };
 
-            console.log(myPerson.children[2].toys[0]); 
-            console.log(myPerson.friends.friend1.name);
-            console.log(myPerson.friends.friend2.age);
+            var product = function(a,b) {
+                console.log(a*b);
+            };
+
+        // Thanks to anonymous functions, we're able to pass functions as arguments into other functions.
+            function doSomething(a,b,myFunc) {
+                myFunc(a,b);
+            };
+
+
+            doSomething(2,5,sum);
+            doSomething(2,6,product);
+
 
         </script>
     </body>
