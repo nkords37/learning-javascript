@@ -4,47 +4,51 @@
     </head>
     <body>
         <script>
-            // Defining a "constructor," which is called when we instantiate this function to create a function.
-            function Person(name, age) {
-                this.name = name;
-                this.age = age;
-                this.children = []; //Array variable;
+            function Car(year,make,model,color) {
+                this.year = year;
+                this.make = make;
+                this.model = model;
+                this.color = color;
+                this.started = false;
+                // See replacement code using "prototype" below.
+                // this.start = function() {
+                //     this.started = true;
+                // };
+                this.stop = function() {
+                    this.started = false;
+                };
+                this.drive = function() {
+                    if (this.started) {
+                        console.log("Vroom!");
+                    } else console.log("You must start the car");
+                };
+            };
+            
+            // Just to show the other way to do it.
+            Car.prototype.start = function() {
+                this.started = true;
             };
 
-            // Use the prototype property to add a behavior to all "Persons"
-            Person.prototype.celebrateBirthday = function() {
-                this.age++;
-            };
+            var oldCar = new Car(2002,"Honda","Accord","Red");
+            var newCar = new Car(2014,"Honda","Accord","Black");
 
-            Person.prototype.addChild = function(name,age) {
-                this.children.push(new Person(name,age))
-            }
+            console.log(oldCar.started);
+            console.log(newCar.started);
 
-            var joe = new Person("Joe", 40); //[new Person("Joe Jr.",10), new Person("Sally 1",7)]
-            var bob = new Person("Bob", 50);
+            oldCar.start();
+            newCar.start();
 
-            // joe.children = [];
-            // joe.children.push(new Person("Sally 2",5));
-            // joe.children.push(new Person("Timmy",3));
+            console.log(oldCar.started);
+            console.log(newCar.started);
 
-            console.log(joe.name);
-            console.log(bob.name);
+            oldCar.drive();
+            newCar.drive(); 
 
-            joe.addChild("Joe Jr.", 25);
-            joe.addChild("Sally", 19);
+            oldCar.stop();
+            newCar.stop();
 
-            // Add grandchild:
-            joe.children[0].addChild("Joe III",1);
-
-            console.log(joe.children[0].name)
-            console.log(joe.children[1].name)
-            console.log(joe.children[0].children[0].name)
-
-            console.log(joe.age);
-            joe.celebrateBirthday();
-            console.log(joe.age);
-
-
+            oldCar.drive();
+            newCar.drive(); 
 
          </script>
     </body>
