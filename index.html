@@ -1,25 +1,18 @@
 <html>
     <head>
-        <title>My first javascript</title>
+        <title>Javscript practice</title>
     </head>
     <body>
         <script>
-            // Create a car object variable:
-            var myOldCar = {
-                make: "Honda",
-                model: "Accord",
-                trim: "EX-V6",
-                color: "Red",
-                year: 2002,
-                numDoors: 4,
+            function lessBy10(a, b, c) {
+                if (Math.abs(a - c) >= 10 || Math.abs(a - b) >= 0 || Math.abs(b - c) >= 10) {
+                    return true;
+                } else return false;
             }
 
-            function changeColor(car,color) {
-                car.color = color;
-            }
-
-            changeColor(myOldCar,"Blue");
-            console.log(myOldCar.color);
+            console.log(lessBy10(1, 7, 11));
+            console.log(lessBy10(1, 7, 10));
+            console.log(lessBy10(11, 1, 7));
         </script>
     </body>
 </html>
