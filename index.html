@@ -3,19 +3,26 @@
         <title>Javscript practice</title>
     </head>
     <body>
+        <p>This is a paragraph element.</p>
+        <div id="Test">This div is a test</div>
+        <p id="p2"></p>
+
         <script>
-            function nearTen(num) {
-                rem = Math.abs(num % 10);
-                if (rem <= 2 || rem >= 8)
-                    return true;
-                else
-                    return false;
-            }
+            document.addEventListener("keydown",function(e) {
+                console.log(e.keyCode + " - " + e.key);
+                document.getElementById("p2").innerHTML = e.key + " key pressed. " + "Key Code: " + e.keyCode;
+
+            });
             
-            console.log(nearTen(12));
-            console.log(nearTen(17));
-            console.log(nearTen(19));
-            console.log(nearTen(-38));
+            var pElement = document.querySelector("p");
+            pElement.addEventListener("mouseover", function() {
+                console.log("Mouse moved over paragraph element");
+            });
+
+            var divTestElement = document.getElementById("Test");
+            divTestElement.addEventListener("mouseover", function() {
+                console.log("Mouse moved over Test ID");
+            });
 
         </script>
     </body>
