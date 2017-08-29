@@ -3,26 +3,29 @@
         <title>Javscript practice</title>
     </head>
     <body>
-        <p>This is a paragraph element.</p>
-        <div id="Test">This div is a test</div>
-        <p id="p2"></p>
+        <div id="bingo" style = "font-family: futura; font-size:250px; color:#008000; text-align:center; height:85%;" > </div>
+        <p style="font-family: futura; color:#008000; font-size:36px; text-align:center;"  id="coords"> </p>
 
         <script>
-            document.addEventListener("keydown",function(e) {
-                console.log(e.keyCode + " - " + e.key);
-                document.getElementById("p2").innerHTML = e.key + " key pressed. " + "Key Code: " + e.keyCode;
-
-            });
+            var xWin = Math.floor(Math.random()*1001);
+            var yWin = Math.floor(Math.random()*1001);
             
-            var pElement = document.querySelector("p");
-            pElement.addEventListener("mouseover", function() {
-                console.log("Mouse moved over paragraph element");
-            });
+            console.log(xWin);
+            console.log(yWin);
 
-            var divTestElement = document.getElementById("Test");
-            divTestElement.addEventListener("mouseover", function() {
-                console.log("Mouse moved over Test ID");
-            });
+            function displayCoords(e) {
+                document.getElementById("coords").innerHTML = "Coordinates: " + e.clientX + ", " + e.clientY;
+            }
+            
+            function xMarksTheSpot(e) {
+                // if (e.clientX <= xWin + 50 && e.clientX >= xWin - 50 && e.clientY <= yWin + 50 && e.ClientY >= yWin - 50) {
+                if (e.clientX == xWin && e.clientY == yWin) {    
+                    document.getElementById("bingo").innerHTML = "You Win!";
+                }
+            }
+
+            document.addEventListener("mousemove", displayCoords)
+            document.addEventListener("mousemove", xMarksTheSpot)
 
         </script>
     </body>
