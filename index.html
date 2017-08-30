@@ -3,29 +3,94 @@
         <title>Javscript practice</title>
     </head>
     <body>
-        <div id="bingo" style = "font-family: futura; font-size:250px; color:#008000; text-align:center; height:85%;" > </div>
-        <p style="font-family: futura; color:#008000; font-size:36px; text-align:center;"  id="coords"> </p>
-
         <script>
-            var xWin = Math.floor(Math.random()*1001);
-            var yWin = Math.floor(Math.random()*1001);
-            
-            console.log(xWin);
-            console.log(yWin);
-
-            function displayCoords(e) {
-                document.getElementById("coords").innerHTML = "Coordinates: " + e.clientX + ", " + e.clientY;
-            }
-            
-            function xMarksTheSpot(e) {
-                // if (e.clientX <= xWin + 50 && e.clientX >= xWin - 50 && e.clientY <= yWin + 50 && e.ClientY >= yWin - 50) {
-                if (e.clientX == xWin && e.clientY == yWin) {    
-                    document.getElementById("bingo").innerHTML = "You Win!";
-                }
+            // Exercise 1: Write function that uses regular expressions to test whether the number input starts with 1, 2, or 3.      
+            function validateNumber(a) {
+                return /^[1-3]/.test(a);
             }
 
-            document.addEventListener("mousemove", displayCoords)
-            document.addEventListener("mousemove", xMarksTheSpot)
+            // Test exercise 1:
+            // console.log(validateNumber(123));
+            // console.log(validateNumber(248));
+            // console.log(validateNumber(8));
+            // console.log(validateNumber(321));
+            // console.log(validateNumber(9453));
+
+
+            // Exercise 2: Write a function that accepts a number and uses regular expressions to test if number input ends with 1, 2, or 3.
+            function validateNumber2(a) {
+                return /[1-3]$/.test(a);
+            }
+
+            // Test exercise 2:
+            // console.log(validateNumber2(123));
+            // console.log(validateNumber2(248));
+            // console.log(validateNumber2(8));
+            // console.log(validateNumber2(321));
+            // console.log(validateNumber2(9453));
+
+
+            // Exercise 3: Write a function that accepts a string argument and return true if that string is a digit. Otherwise, return false. Use regular expressions.
+            function myIsDigit(str) {
+                // return /^\d$/.test(str);
+                return /^\d$/.test(str);
+            }
+            
+            // Test exercise 3:
+            // console.log(myIsDigit('')); // false
+            // console.log(myIsDigit('7')); // true
+            // console.log(myIsDigit(' ')); // false
+            // console.log(myIsDigit('a')); // false
+            // console.log(myIsDigit('2')); // true
+            // console.log(myIsDigit('a5')); // false
+            // console.log(myIsDigit('14')); // false
+            
+
+            // Exercise 4: Write a function that accepts a date and checks to see if the date is formatted '00-00-0000 00:00'
+            function dateChecker(date) {
+                //return /\d{2}-\d{2}-\d{4} \d{2}:\d{2}/.test(date);
+                return /([1][012]|0\d)-\d{2}-\d{4} ([1][012]|0\d):[0-5]\d/.test(date);
+            }
+
+            //Test exercise 4:
+            // console.log(dateChecker('01-09-2016 01:20')); //true
+            // console.log(dateChecker('01-09-2016 01;20')); //false
+            // console.log(dateChecker('01_09_2016 01:20')); //false
+            // console.log(dateChecker('12-10-1066 12:00')); //true
+            // console.log(dateChecker('Tenth of January')); //false
+
+
+            // Exercise 5: Write a function that counts how many vowels are in the string.
+            function countVowels(str) {
+                // Check input type.
+                if (typeof str != "string") return "Invalid input. Input a string."
+                
+                var vowels = str.match(/[aeiou]/ig)
+                if (!vowels) return 0;                
+                return vowels.length;
+            }
+
+            // Test exercise 5:
+            // console.log(countVowels('bbababba'));   // 3
+            // console.log(countVowels('hellohellohellohello'));   // 8
+            // console.log(countVowels('krtmndsptzxvbmnwrt'));   // 0
+            // console.log(countVowels('asljdflsajfieworiuewnvndsfbawofejawefjiofajdsdf'));    // 16
+            // console.log(countVowels('asljdflsAjfiewOriuEwnvndsfbawofejawefjIOfajdsdf'));    // 16
+
+
+            // Exercise 7: Write a function that takes an array of file names and returns an array of only the PNG images.
+            function findPNG(arr) {
+                var output = [];
+                for (i=0; i<arr.length; i++) {
+                    if (/\.png$/i.test(arr[i])) output.push(arr[i]);                    
+                };
+                return output;
+            };
+
+            // Test exercise 7:
+            console.log(findPNG(['img01.jpeg', 'file.png', 'xrf214579.gif', 'image.png', 'dogs.tif']));   // ['file.png', 'image.png']
+            console.log(findPNG(['asfldjasdfjpng.jpeg', 'pngsagsdfj.png', '.pngsdfasdfsaf.gif', '.pngasdfasifsda.png', 'uiuiuiiaisdfi.tif']));    // ['pngsagsdfj.png', '.pngasdfasifsda.png']
+            console.log(findPNG(['test.png']))
 
         </script>
     </body>
