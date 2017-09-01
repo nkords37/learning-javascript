@@ -4,93 +4,98 @@
     </head>
     <body>
         <script>
-            // Exercise 1: Write function that uses regular expressions to test whether the number input starts with 1, 2, or 3.      
-            function validateNumber(a) {
-                return /^[1-3]/.test(a);
-            }
 
-            // Test exercise 1:
-            // console.log(validateNumber(123));
-            // console.log(validateNumber(248));
-            // console.log(validateNumber(8));
-            // console.log(validateNumber(321));
-            // console.log(validateNumber(9453));
+//Iterative code:    
 
+// Counting up
+// function factorial(n) {
 
-            // Exercise 2: Write a function that accepts a number and uses regular expressions to test if number input ends with 1, 2, or 3.
-            function validateNumber2(a) {
-                return /[1-3]$/.test(a);
-            }
+    // var output = 1
+    // for (i=2; i <= n; i++) {
+    //     output *= i;
+    // }
+    
+    // return output
+// }
 
-            // Test exercise 2:
-            // console.log(validateNumber2(123));
-            // console.log(validateNumber2(248));
-            // console.log(validateNumber2(8));
-            // console.log(validateNumber2(321));
-            // console.log(validateNumber2(9453));
+// Ex 1: Factorial with Recursive Code:
+function factorial(n) {
+    if (n === 0) return 1;
+    return n * factorial(n-1)
+    };
 
+// console.log(factorial(0));
+// console.log(factorial(1));
+// console.log(factorial(2));
+// console.log(factorial(3));
+// console.log(factorial(4));
+// console.log(factorial(5));
 
-            // Exercise 3: Write a function that accepts a string argument and return true if that string is a digit. Otherwise, return false. Use regular expressions.
-            function myIsDigit(str) {
-                // return /^\d$/.test(str);
-                return /^\d$/.test(str);
-            }
-            
-            // Test exercise 3:
-            // console.log(myIsDigit('')); // false
-            // console.log(myIsDigit('7')); // true
-            // console.log(myIsDigit(' ')); // false
-            // console.log(myIsDigit('a')); // false
-            // console.log(myIsDigit('2')); // true
-            // console.log(myIsDigit('a5')); // false
-            // console.log(myIsDigit('14')); // false
-            
+// Ex 2: Spider legs:
 
-            // Exercise 4: Write a function that accepts a date and checks to see if the date is formatted '00-00-0000 00:00'
-            function dateChecker(date) {
-                //return /\d{2}-\d{2}-\d{4} \d{2}:\d{2}/.test(date);
-                return /([1][012]|0\d)-\d{2}-\d{4} ([1][012]|0\d):[0-5]\d/.test(date);
-            }
+function spiderLegs(n) {
+    if (n === 0) return n;
+    return 8 + spiderLegs(n-1);
+}
 
-            //Test exercise 4:
-            // console.log(dateChecker('01-09-2016 01:20')); //true
-            // console.log(dateChecker('01-09-2016 01;20')); //false
-            // console.log(dateChecker('01_09_2016 01:20')); //false
-            // console.log(dateChecker('12-10-1066 12:00')); //true
-            // console.log(dateChecker('Tenth of January')); //false
+// console.log(spiderLegs(0));
+// console.log(spiderLegs(1));
+// console.log(spiderLegs(2));
 
+// Ex 3: Radioactive bunnies; odd bunnies have 2 ears, even bunnies have 3:
 
-            // Exercise 5: Write a function that counts how many vowels are in the string.
-            function countVowels(str) {
-                // Check input type.
-                if (typeof str != "string") return "Invalid input. Input a string."
-                
-                var vowels = str.match(/[aeiou]/ig)
-                if (!vowels) return 0;                
-                return vowels.length;
-            }
+function bunnyEars(bunnies) {
+    if (bunnies === 0) return 0;
+    if (bunnies % 2 === 0) return 3 + bunnyEars(bunnies - 1);
+    else return 2 + bunnyEars(bunnies - 1);
+    };
 
-            // Test exercise 5:
-            // console.log(countVowels('bbababba'));   // 3
-            // console.log(countVowels('hellohellohellohello'));   // 8
-            // console.log(countVowels('krtmndsptzxvbmnwrt'));   // 0
-            // console.log(countVowels('asljdflsajfieworiuewnvndsfbawofejawefjiofajdsdf'));    // 16
-            // console.log(countVowels('asljdflsAjfiewOriuEwnvndsfbawofejawefjIOfajdsdf'));    // 16
+    // console.log(bunnyEars(0));
+    // console.log(bunnyEars(1));
+    // console.log(bunnyEars(2));
+    // console.log(bunnyEars(3));
+    // console.log(bunnyEars(4));
 
+// Ex 4: Power of a number:
 
-            // Exercise 7: Write a function that takes an array of file names and returns an array of only the PNG images.
-            function findPNG(arr) {
-                var output = [];
-                for (i=0; i<arr.length; i++) {
-                    if (/\.png$/i.test(arr[i])) output.push(arr[i]);                    
-                };
-                return output;
-            };
+function power(n,k) {
+    if (k === 0) return 1;
+    return n * power(n,k-1);
+}
 
-            // Test exercise 7:
-            console.log(findPNG(['img01.jpeg', 'file.png', 'xrf214579.gif', 'image.png', 'dogs.tif']));   // ['file.png', 'image.png']
-            console.log(findPNG(['asfldjasdfjpng.jpeg', 'pngsagsdfj.png', '.pngsdfasdfsaf.gif', '.pngasdfasifsda.png', 'uiuiuiiaisdfi.tif']));    // ['pngsagsdfj.png', '.pngasdfasifsda.png']
-            console.log(findPNG(['test.png']))
+// console.log(power(3,0));
+// console.log(power(3,1));
+// console.log(power(2,2));
+// console.log(power(3,2));
+
+// Ex 5: Fibonacci:
+
+function fibonacci(n) {
+    if (n === 0) return 0;
+    if (n === 1) return 1;
+    return fibonacci(n-1) + fibonacci(n-2);
+}
+
+console.log(fibonacci(0)); // 0
+console.log(fibonacci(1)); // 1
+console.log(fibonacci(2)); // 1
+console.log(fibonacci(3)); // 2
+console.log(fibonacci(4)); // 3
+console.log(fibonacci(5)); // 5
+console.log(fibonacci(6)); // 8
+console.log(fibonacci(7)); // 13
+console.log(fibonacci(8)); // 21
+
+// Template Literals
+
+function fullName(first, middle, last) {
+    return `${first} ${middle} ${last}`;
+}
+
+console.log(fullName("Nick", "E", "Kordsmeier"));
+
+var FN = (f,m,l) => `${f} ${m} ${l}`
+console.log(FN("Nick", "E", "Kordsmeier"))
 
         </script>
     </body>
