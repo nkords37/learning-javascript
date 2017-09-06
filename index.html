@@ -1,101 +1,183 @@
 <html>
     <head>
-        <title>Javscript practice</title>
+        <title>Javscript Review</title>
     </head>
     <body>
         <script>
+            // Exercise 1: Create function that accepts string and number, return the string repeated by the number.
+            function repeatString(n, str) {
+                return str.repeat(n);
 
-//Iterative code:    
+                // Loop Method
+                // var outStr = "";
+                // for (i=0; i < n; i++) {
+                //     outStr += str;
+                // };
+                // return outStr;
 
-// Counting up
-// function factorial(n) {
+            };
 
-    // var output = 1
-    // for (i=2; i <= n; i++) {
-    //     output *= i;
-    // }
-    
-    // return output
-// }
+            // console.log(repeatString(1, 'hello'));
+            // console.log(repeatString(2, 'world'));
 
-// Ex 1: Factorial with Recursive Code:
-function factorial(n) {
-    if (n === 0) return 1;
-    return n * factorial(n-1)
-    };
+            // Exercise 2: Write function that takes three integers--min, max, step--then return array where first element
+            //             is the min, and each subsequent element is counted up by the step until the max is reached.
 
-// console.log(factorial(0));
-// console.log(factorial(1));
-// console.log(factorial(2));
-// console.log(factorial(3));
-// console.log(factorial(4));
-// console.log(factorial(5));
+            function generateRange(min, max, step) {
+                
+                var rangeArr = [];
 
-// Ex 2: Spider legs:
+                for (var i = min; i <= max; i += step) {
+                    rangeArr.push(i);
+                };
 
-function spiderLegs(n) {
-    if (n === 0) return n;
-    return 8 + spiderLegs(n-1);
-}
+                // Less elegant solution:                
+                // var rangeArr = [min];
 
-// console.log(spiderLegs(0));
-// console.log(spiderLegs(1));
-// console.log(spiderLegs(2));
+                // for (var i = 0; i < (max - min) / step - 1; i++) {
+                //     rangeArr.push(rangeArr[i] + step);
+                // };
 
-// Ex 3: Radioactive bunnies; odd bunnies have 2 ears, even bunnies have 3:
+                // rangeArr.push(max);
+                
+                return rangeArr
+            };
 
-function bunnyEars(bunnies) {
-    if (bunnies === 0) return 0;
-    if (bunnies % 2 === 0) return 3 + bunnyEars(bunnies - 1);
-    else return 2 + bunnyEars(bunnies - 1);
-    };
+            // console.log(generateRange(2,10,2));
+            // console.log(generateRange(1,10,3));
+            // console.log(generateRange(19,49,2));
+            // console.log(generateRange(10,82,9));
 
-    // console.log(bunnyEars(0));
-    // console.log(bunnyEars(1));
-    // console.log(bunnyEars(2));
-    // console.log(bunnyEars(3));
-    // console.log(bunnyEars(4));
+            // Exercise 3:
 
-// Ex 4: Power of a number:
+            // Conditionals Solution
+            // function describeList(listArr) {
+            //     if (listArr.length === 0) return "Empty";
+            //     else if (listArr.length === 1) return "Singleton";
+            //     else return "Longer";
+            // };
 
-function power(n,k) {
-    if (k === 0) return 1;
-    return n * power(n,k-1);
-}
+            // Switch/Case Solution
+            function describeList(listArr) {
+                switch (listArr.length) {
+                    case 0:
+                        return "Empty";
+                        break;
+                    case 1:
+                        return "Singleton";
+                        break;
+                    default:
+                        return "Longer";
+                }
+            }
 
-// console.log(power(3,0));
-// console.log(power(3,1));
-// console.log(power(2,2));
-// console.log(power(3,2));
+            // console.log(describeList([]));
+            // console.log(describeList([12]));
+            // console.log(describeList([1,2]));
+            // console.log(describeList([]));
+            // console.log(describeList([1.5]));
+            // console.log(describeList([1.5,2.5]));
 
-// Ex 5: Fibonacci:
+            // Exercise 4: Write a function such that each lowercase letter becomes uppercase and each uppercase letter becomes lowercase:
+            function alternateCase(myStr) {
 
-function fibonacci(n) {
-    if (n === 0) return 0;
-    if (n === 1) return 1;
-    return fibonacci(n-1) + fibonacci(n-2);
-}
+                // var outStr = "";
+                // for (i = 0; i < myStr.length; i++) {
+                //     if (myStr[i] === myStr[i].toUpperCase()) {
+                //         outStr += myStr[i].toLowerCase();
+                //     }
+                //     else outStr += myStr[i].toUpperCase();
+                // }
+                // return outStr;
 
-console.log(fibonacci(0)); // 0
-console.log(fibonacci(1)); // 1
-console.log(fibonacci(2)); // 1
-console.log(fibonacci(3)); // 2
-console.log(fibonacci(4)); // 3
-console.log(fibonacci(5)); // 5
-console.log(fibonacci(6)); // 8
-console.log(fibonacci(7)); // 13
-console.log(fibonacci(8)); // 21
+                // Less elegant solution:                
+                var outStr = "";
+                for (i = 0; i < myStr.length; i++) {
+                    if (/[A-Z]/.test(myStr[i])) {   // If Upper Case
+                        outStr += myStr[i].toLowerCase();
+                    } else outStr += myStr[i].toUpperCase();          
+                }
+                return outStr;
 
-// Template Literals
+                // Least elegant solution:                
+                // var outStr = "";
+                // for (i = 0; i < myStr.length; i++) {
+                //     if (myStr[i].charCodeAt() >= 65 && myStr[i].charCodeAt() <= 90) {   // If Upper Case
+                //         outStr += myStr[i].toLowerCase();
+                //     }
+                //     else if (myStr[i].charCodeAt() >= 97 && myStr[i].charCodeAt() <= 122) {   // If Lower Case
+                //         outStr += myStr[i].toUpperCase();
+                //     }
+                //     else outStr += myStr[i];                    
+                // }
+                // return outStr;
 
-function fullName(first, middle, last) {
-    return `${first} ${middle} ${last}`;
-}
+            }
 
-console.log(fullName("Nick", "E", "Kordsmeier"));
+            // console.log(alternateCase('hello world'));      // HELLO WORLD
+            // console.log(alternateCase('HELLO WORLD'));      // hello world
+            // console.log(alternateCase('hello WORLD'));      // HELLO world
+            // console.log(alternateCase('HeLLo WoRLD'));      // hEllO wOrld
+            // console.log(alternateCase('12345'));            // 12345
+            // console.log(alternateCase('1a2b3c4d5e'));       // 1A2B3C4D5E
+            // console.log(alternateCase('String.prototype.charCodeAt'));  // sTRING.PROTOTYPE.CHARcODEaT  
+            // console.log(alternateCase(alternateCase('Hello World')));  // Hello World
 
-var FN = (f,m,l) => `${f} ${m} ${l}`
-console.log(FN("Nick", "E", "Kordsmeier"))
+            // Exercise 5: Given array of strings representing list of usernames, return true only if 
+            //             usernames meet the below guidelines:
+            /*  -Between 6-10 characters
+                -Contains at least 1 lowercase letter
+                -Contains at least 1 number
+                -Only contains lowercase letters and numbers
+            */
+            
+            function authList(userArr) {
+             
+                // for (var i = 0; i < userArr.length; i++) {
+                    
+                //     var testName = userArr[i];
+
+                //     if (testName.length < 6 || testName.length > 10) return false;
+                //     if (!(/[a-z]/.test(testName))) return false;
+                //     if (!(/[1-9]/.test(testName))) return false;
+                //     if (/[^a-z\d]/.test(testName)) return false;
+                // }
+                // return true;
+
+
+                var unAuth = ""
+
+                for (var i = 0; i < userArr.length; i++) {
+                    
+                    var testName = userArr[i];
+
+                    if (testName.length < 6 || testName.length > 10) {
+                        unAuth += (testName + " has an invalid number of characters \n");
+                    }
+
+                    if (!(/[a-z]/.test(testName))) {
+                        unAuth += (testName + " does not contain a lowercase letter \n");
+                    }
+                    if (!(/[1-9]/.test(testName))) {
+                        unAuth += (testName + " does not contain a number \n");
+                    };
+                    if (/[^a-z\d]/.test(testName)) {
+                        unAuth += (testName + " contains an invalid character(s) (lowercase letters and numbers only) \n");
+                    };
+                }
+                
+                if (unAuth === "") return true;
+                else {
+                    console.log(unAuth + "\ntherefore,");
+                    return false;
+                }                
+            }
+
+            console.log(authList(['john123', 'alex222', 'sandra1']));    // returns true
+            console.log(authList(['john123', 'alex222', 'sandraW']));    // returns false because sandraW has no number
+            console.log(authList(['john_123', 'alex222', 'sandra1', 'tt@Ta']));   // returns false because john_123 contains an invalid character
+            console.log(authList(['123456']))
+
 
         </script>
     </body>
